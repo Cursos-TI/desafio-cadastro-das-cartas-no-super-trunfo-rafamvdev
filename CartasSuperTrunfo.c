@@ -1,22 +1,54 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
-
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
+
+    char codigo [2];
+    char cidade[30];
+    char estado[30];
+    float area, pib;
+    int ponto_turistico, populacao, qtdcartas;
     
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
     
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+
+    printf("Jogo Super Trunfo. Você precisa inserir os valores das Cidades para incluir as cartas no jogo.\n");
+    printf("CADASTRO DE CARTAS:\n");
+
+    printf("Insira o nome do Estado: \n");
+    scanf(" %[^\n]", estado);
+    
+    printf("Insira o código da Cidade: \n");
+    scanf("%s", codigo);
+
+   // inclui o %[^\n] para poder incluir espaço no cadastro de nomes de cidades
+    printf("Insira o nome da Cidade: \n");
+    scanf(" %[^\n]", cidade);
+    /*inclui o while getchar abaixo visto um erro que estava ocorrendo ao executar o programa,
+    impedindo o progresso no cadastro das informações. Assim consigo limpar o buffer e seguir com 
+    o cadastro normalmente sem erro.
+    */
+    while (getchar() != '\n');
+
+    printf("Insira a população em quantidade numérica: \n");
+    scanf("%d", &populacao);
+
+    printf("Insira o tamanho da área em metros quadrados: \n");
+    scanf("%f", &area);
+
+    printf("Insira o PIB: \n");
+    scanf("%f", &pib);
+
+    printf("Insira a quantidade de pontos turísticos: \n");
+    scanf("%d", &ponto_turistico);
+
+    printf("Sua carta de Super Trunfo está registrada:\n");
+    printf("Pais: %s\n", estado);
+    printf("Codigo: %s\n", codigo);
+    printf("Cidade: %s\n", cidade);
+    // inclui o %.3f para limitar os numeros reais, deixando a visualização mais amigável
+    printf("População: %d\n", populacao);
+    printf("Area: %.3f\n", area);
+    printf("PIB: %.3f\n", pib);
+    printf("Pontos Turísticos: %d\n", ponto_turistico);
 
     return 0;
 }
