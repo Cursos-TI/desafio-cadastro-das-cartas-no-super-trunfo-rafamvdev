@@ -1,74 +1,91 @@
 #include <stdio.h>
-// forma para inclusão de vários cadastros com array
 
-#define MAX_CARTAS 40  // definição de constante com numero máximo de cartas a serem cadastradas e #define para consumir menos memória na execução
+int main(){
+    char codigo_1[3], codigo_2[3];
+    char cidade_1[30], cidade_2[30];
+    char estado_1[30], estado_2[30];
+    float area_1, pib_1, area_2, pib_2;
+    int ponto_turistico_1, populacao_1, ponto_turistico_2, populacao_2;
 
-typedef struct { // utilizei typedef struct para conseguir sequenciar as cartas e manter o código limpo e de fácil manutenção
-    char codigo[3];
-    char cidade[30];
-    char estado[30];
-    float area, pib;
-    int ponto_turistico, populacao;
-} Cartas;
-
-int main() {
-    Cartas cartas[MAX_CARTAS]; //criação de array das cartas
-    int qtd_cartas = 0; // delimitando o valor iniciar 0 para a quantidade de cartas
-    char continuar; // icluindo um char condição, para caso o usuario queira parar de criar cartas, basta selecionar uma das opções no wile 
 
     printf("Jogo Super Trunfo - Cadastro de Cidades\n");
+    printf("-----------------------------------------\n");
+    printf("Cadastro da primeira carta!\n");
+    printf("-----------------------------------------\n");
+    
+    printf("Digite o nome do Estado:\n");
+    scanf(" %[^\n]", &estado_1); // incluindo %[^\n] ao invés de %s o programa consegue ler o espaço do nome do estado e cidade
 
-    do {
-        if (qtd_cartas >= MAX_CARTAS) { // implementando uma condição, onde a quantidade de cartas deve ter um limite de 40, acima disso o sistema para de solicitar inclusões
-            printf("Limite de cartas atingido!\n"); 
-            break;
-        }
+    printf("Digite o código da cidade: (Escolha um número e uma letra. Ex: 1A)\n");
+    scanf("%s", &codigo_1);
 
-        printf("\nCadastro de Carta %d:\n", qtd_cartas + 1); //  inicio do contador para registro na array
+    printf("Digite o nome da Cidade: \n");
+    scanf(" %[^\n]", &cidade_1);  
 
-        printf("Insira o nome do Estado: \n");
-        scanf(" %[^\n]", cartas[qtd_cartas].estado); // incluindo[qtd_cartas] para representar o indice atual da array cartas e armazenando a variável estado
+    printf("Digite a quantidade populacional: \n");
+    scanf("%d", &populacao_1);
 
-        printf("Insira o código da Cidade: \n");
-        scanf("%s", cartas[qtd_cartas].codigo);
+    while (getchar() != '\n');
 
-        printf("Insira o nome da Cidade: \n");
-        scanf(" %[^\n]", cartas[qtd_cartas].cidade);
+    printf("Digite o tamanho da área da cidade por m²: \n");
+    scanf("%f", &area_1);
 
-        printf("Insira a população: \n");
-        scanf("%d", &cartas[qtd_cartas].populacao);
+    printf("Digite o PIB da cidade: \n");
+    scanf("%f", &pib_1);
 
-        // limpa o buffer antes de ler a área para evitar pulos inesperados
-        while (getchar() != '\n');
+    printf("Digite a quantidade de pontos turísticos: \n");
+    scanf("%d", &ponto_turistico_1);
 
-        printf("Insira a área (m²): \n");
-        scanf("%f", &cartas[qtd_cartas].area);
+    printf("Cadastro da segunda carta!\n");
 
-        printf("Insira o PIB: \n");
-        scanf("%f", &cartas[qtd_cartas].pib);
+    printf("Digite o nome do Estado:\n");
+    scanf(" %[^\n]", &estado_2); // incluindo %[^\n] ao invés de %s o programa consegue ler o espaço do nome do estado e cidade
 
-        printf("Insira a quantidade de pontos turísticos: \n");
-        scanf("%d", &cartas[qtd_cartas].ponto_turistico);
+    printf("Digite o código da cidade: (Escolha um número e uma letra. Ex: 1A)\n");
+    scanf("%s", &codigo_2);
 
-        qtd_cartas++; // adiciona mais um a array
+    printf("Digite o nome da Cidade: \n");
+    scanf(" %[^\n]", &cidade_2);  
 
-        printf("\nDeseja cadastrar outra cidade? (S para continuar, N para sair): "); // texto de condição para seguir com o cadastro
-        scanf(" %c", &continuar);
+    printf("Digite a quantidade populacional: \n");
+    scanf("%d", &populacao_2);
 
-    } while (continuar == 'S' || continuar == 's'); // enquanto resposta for S ou s, o programa retorna ao loop cadastrando nova carta
+    // limpa o buffer antes de ler a área para evitar pulos inesperados
+    while (getchar() != '\n');
 
-    printf("\nCARTAS CADASTRADAS:\n");
-    // para mostrar de forma ordenada cada carta cadastrada usei o laço de repetição for e inclui uma variavel i como contador (se i for menor que qtd_cartas o printf finaliza)
-    for (int i = 0; i < qtd_cartas; i++) { 
-        printf("\nCarta %d:\n", i + 1);
-        printf("Estado: %s\n", cartas[i].estado);
-        printf("Código: %s\n", cartas[i].codigo);
-        printf("Cidade: %s\n", cartas[i].cidade);
-        printf("População: %d\n", cartas[i].populacao);
-        printf("Área: %.0f\n", cartas[i].area);
-        printf("PIB: %.0f\n", cartas[i].pib);
-        printf("Pontos Turísticos: %d\n", cartas[i].ponto_turistico);
-    }
+    printf("Digite o tamanho da área da cidade por m²: \n");
+    scanf("%f", &area_2);
 
-    return 0;
+    printf("Digite o PIB da cidade: \n");
+    scanf("%f", &pib_2);
+
+    printf("Digite a quantidade de pontos turísticos: \n");
+    scanf("%d", &ponto_turistico_2);
+
+    printf("-----------------------------------------\n");
+    printf("Registro das cartas cadastradas!\n");
+    printf("-----------------------------------------\n");
+    printf("Carta 1: \n");
+    printf("-----------------------------------------\n");
+
+    printf("Estado: %s\n", estado_1);
+    printf("Código carta: %s\n", codigo_1);
+    printf("Cidade: %s\n", cidade_1);
+    printf("População: %d\n", populacao_1);
+    printf("Área: %.2f km²\n", area_2);
+    printf("PIB: %.2f reais\n", pib_1);
+    printf("Pontos Turísticos: %d\n", ponto_turistico_1);
+
+    printf("-----------------------------------------\n");
+    printf("Carta 2: \n");
+    printf("-----------------------------------------\n");
+
+    printf("Estado: %s\n", estado_2);
+    printf("Código carta: %s\n", codigo_2);
+    printf("Cidade: %s\n", cidade_2);
+    printf("População: %d\n", populacao_2);
+    printf("Área: %.2f km²\n", area_2);
+    printf("PIB: %.2f reais\n", pib_2);
+    printf("Pontos Turísticos: %d\n", ponto_turistico_2);
+    
 }
