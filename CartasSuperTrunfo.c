@@ -4,8 +4,9 @@ int main(){
     char codigo_1[3], codigo_2[3];
     char cidade_1[30], cidade_2[30];
     char estado_1[30], estado_2[30];
-    float area_1, pib_1, area_2, pib_2, densidade_1, capita_1, densidade_2, capita_2;
-    int ponto_turistico_1, populacao_1, ponto_turistico_2, populacao_2;
+    float area_1, pib_1, area_2, pib_2, densidade_1, capita_1, densidade_2, capita_2, superPoder1, superPoder2;
+    int ponto_turistico_1, ponto_turistico_2,resultado_area, resultado_pib, resultado_densidade, resultado_pt,resultado_populacao, resultado_capital, resultado_super;
+    unsigned int populacao_1, populacao_2;
 
 
     printf("Jogo Super Trunfo - Cadastro de Cidades\n");
@@ -68,6 +69,9 @@ int main(){
     densidade_2 = populacao_2 / area_2;
     capita_2 = pib_2 / populacao_2;
 
+    superPoder1 = (float)(1 / populacao_1) + area_1 + pib_1 + (float)ponto_turistico_1 + capita_1;
+    superPoder2 = (float)(1 / populacao_2) + area_2 + pib_2 + (float)ponto_turistico_2 + capita_2;
+
     printf("-----------------------------------------\n");
     printf("Registro das cartas cadastradas!\n");
     printf("-----------------------------------------\n");
@@ -83,6 +87,7 @@ int main(){
     printf("Pontos Turísticos: %d\n", ponto_turistico_1);
     printf("Densidade Populacional: %.2f hab/km²\n", densidade_1);
     printf("PIB per Capita: %.2f reais\n", capita_1);
+    printf("Super Poder Carta 1: %.2f \n", superPoder1);
 
     printf("-----------------------------------------\n");
     printf("Carta 2: \n");
@@ -97,6 +102,28 @@ int main(){
     printf("Pontos Turísticos: %d\n", ponto_turistico_2);
     printf("Densidade Populacional: %.2f hab/km²\n", densidade_2);
     printf("PIB per Capita: %.2f reais\n", capita_2);
+    printf("Super Poder Carta 2: %.2f \n", superPoder2);
+    
+    resultado_area = area_1 > area_2;
+    resultado_pib  = pib_1 > pib_2;
+    resultado_densidade = densidade_1 > densidade_2; 
+    resultado_pt = ponto_turistico_1 > ponto_turistico_2;
+    resultado_populacao  = populacao_1 > populacao_2;
+    resultado_capital = capita_1 > capita_2; 
+    resultado_super = superPoder1 > superPoder2;
 
-    return 0;
+    printf("-----------------------------------------\n");
+    printf("BATALHA DAS CARTAS: \n");
+    printf("-----------------------------------------\n");
+
+    printf("Resultado Area 1 > Area 2: %d\n",resultado_area);
+    printf("Resutado Pib 1 > Pib 2: %d\n",resultado_pib);
+    printf("Resultado Densidade 1 > Densidade 2: %d\n",resultado_densidade);
+    printf("Resultado Pontos Turisticos 1 > Pontos Turisticos 2: %d\n",resultado_pt);
+    printf("Resultado População 1 > População 2: %d\n",resultado_populacao);
+    printf("Resultado PerCapita 1 > PerCapita 2: %d\n",resultado_capital);
+    printf("Resultado SuperPoder1 > SuperPoder2: %d\n",resultado_super);
+    
+
+   return 0;
 }
